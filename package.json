@@ -15,7 +15,6 @@
   "dependencies": {
     "@barba/core": "^2.9.7",
     "express": "^4.17.1",
-    "gsap": "^3.5.1",
     "mongoose": "^5.11.12",
     "morgan": "^1.10.0",
     "path": "^0.12.7",

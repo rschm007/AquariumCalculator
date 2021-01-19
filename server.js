@@ -1,54 +1,35 @@
-// DEPENDENCIES
 const express = require("express");
+const mongoose = require("mongoose");
 
-// EXPRESS CONFIGURATION
+const PORT = process.env.PORT || 3000;
 
-// Tells node that we are creating an "express" server
 const app = express();
 
-// Sets an initial port. We"ll use this later in our listener
-const PORT = process.env.PORT || 5000;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// render static files
 app.use(express.static("public"));
 
-// set view engine
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aqcalc_db", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
+
 app.set("view engine", "pug");
 
-// ** GET ROUTES  - Display Pages
-// root route
+// ==========================
+// ROUTES
+// ==========================
+
+app.use(require("./controllers/api.js"));
+
 app.get("/", function (req, res) {
   res.render("index");
 });
 
-// home route
-app.get("/home", function (req, res) {
-  res.render("home");
-});
-
-// about route
-app.get("/about", function (req, res) {
-  res.render("about");
-});
-
-// contact route
-app.get("/contact", function (req, res) {
-  res.render("contact");
-});
-
-// projects route
-app.get("/projects", function (req, res) {
-  res.render("projects");
-});
-
-// about route
-app.get("/skills", function (req, res) {
-  res.render("skills");
-});
-
 // default route
 app.get("*", function (req, res) {
-  res.render("home");
+  res.render("index");
 });
 
 // start server listening
