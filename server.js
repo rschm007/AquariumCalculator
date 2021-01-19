@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const routes = require("./routes")
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,20 +18,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aqcalc_db", {
 
 app.set("view engine", "pug");
 
-// ==========================
-// ROUTES
-// ==========================
-
-app.use(require("./controllers/api.js"));
-
-app.get("/", function (req, res) {
-  res.render("index");
-});
-
-// default route
-app.get("*", function (req, res) {
-  res.render("index");
-});
+app.use(routes);
 
 // start server listening
 app.listen(PORT, function () {
