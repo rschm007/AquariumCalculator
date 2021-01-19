@@ -1,0 +1,24 @@
+{
+  "name": "portfolio_page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^1.9.6"
+  },
+  "dependencies": {
+    "@barba/core": "^2.9.7",
+    "express": "^4.17.1",
+    "gsap": "^3.5.1",
+    "mongoose": "^5.11.12",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "pug": "^3.0.0"
+  }
+}
